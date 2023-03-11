@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+# Parses a litter file and shows stats.
+#
+# Usage:
+# Run on the command line:
+#   litter "<CSV string>" "<optional comma-separated names of enabled columns>`
+#
+# Example:
+#   litter ~/trash.txt
+
+
+# TODO require the parser
+# require_relative "../lib/litter/shortcuts"
+require "amazing_print"
+
+path = ARGV[0]
+unless path
+  raise ArgumentError, "File path argument required."
+end
+
+stats = Litter.parse(path)
+
+ap stats
