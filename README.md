@@ -36,7 +36,7 @@ $ gem install litter
 
 ## Usage
 
-// TODO
+You can download [the example litter file](https://github.com/fpsvogel/litter/blob/main/doc/example.txt) and use it as a template.
 
 ## Contributing
 

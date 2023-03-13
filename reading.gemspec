@@ -11,8 +11,6 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 
-  spec.add_runtime_dependency "pastel"
-
   spec.add_development_dependency "debug"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "minitest-reporters"
