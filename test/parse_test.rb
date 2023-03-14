@@ -23,13 +23,13 @@ class ParseTest < Minitest::Test
   @files[:examples][:basic] = <<~EOM.freeze
     2023/03/08 @west wildwood
     car mat
-    folding chair x2 #kept
+    folding chair *2 #kept
     concrete-filled bucket @bridge
 
     2023/4/1
-    concrete-filled bucket x2 @west wildwood #TODO
+    concrete-filled bucket *2 @west wildwood #TODO
     shopping cart @bridge
-    car mat
+    car mat #kept
   EOM
 
 
@@ -83,7 +83,7 @@ class ParseTest < Minitest::Test
     define_method("test_example_#{group_name}") do
       exp = items[:examples][group_name]
       act = Litter.parse(file_str)
-      debugger unless exp == act
+      # debugger unless exp == act
       assert_equal exp, act,
         "Failed to parse this group of examples: #{group_name}"
     end

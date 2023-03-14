@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     litter (0.1.0)
+      parslet
 
 GEM
   remote: https://rubygems.org/
@@ -45,6 +46,7 @@ GEM
       ruby-progressbar
     parser (3.2.1.1)
       ast (~> 2.4.1)
+    parslet (2.0.0)
     path_expander (1.1.1)
     pretty-diffs (1.0.2)
     public_suffix (5.0.1)
