@@ -18,6 +18,6 @@ unless path
 end
 
 # TODO show stats instead of the raw parser output.
-parsed = Litter.parse(path:)
+parsed = Litter.parse(path)
 
 ap parsed

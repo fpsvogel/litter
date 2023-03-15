@@ -59,7 +59,7 @@ class ParseTest < Minitest::Test
   inputs.each do |name, file_str|
     define_method("test_#{name}") do
       exp = outputs[name]
-      act = Litter.parse(file_str)
+      act = Litter.parse(file: StringIO.new(file_str))
       # debugger unless exp == act
       assert_equal exp, act,
         "Failed to parse this example: #{name}"
