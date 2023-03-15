@@ -13,7 +13,7 @@ module Litter
         validate_path_or_file(path, file)
 
         @string = path ? ::File.read(path) : file.read
-        @config = Config.new(config).hash
+        @config = Config.new(config || {}).hash
       end
 
       # Parses the file.
