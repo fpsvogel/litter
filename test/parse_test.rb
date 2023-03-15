@@ -5,22 +5,19 @@ require_relative "test_helper"
 require "litter/litter"
 
 class ParseTest < Minitest::Test
-  self.class.attr_reader :files, :items
+  self.class.attr_reader :inputs, :outputs
 
-  def files
-    self.class.files
+  def inputs
+    self.class.inputs
   end
 
-  def items
-    self.class.items
+  def outputs
+    self.class.outputs
   end
 
   # ==== TEST INPUT
-  @files = {}
-
-  ## TEST INPUT: EXAMPLES
-  @files[:examples] = {}
-  @files[:examples][:basic] = <<~EOM.freeze
+  @inputs = {}
+  @inputs[:comprehensive] = <<~EOM.freeze
     2023/03/08 @west wildwood
     car mat
     folding chair *2 #kept
@@ -34,11 +31,10 @@ class ParseTest < Minitest::Test
 
 
 
-  # ==== EXPECTED DATA
-  # The results of parsing the above Files are expected to equal these hashes.
-  @items = {}
-  @items[:examples] = {}
-  @items[:examples][:basic] = {
+  # ==== EXPECTED OUTPUT
+  # The results of parsing the above input is expected to equal this output.
+  @outputs = {}
+  @outputs[:comprehensive] = {
     "car mat" => [
       { date: Date.new(2023,3,8), location: "west wildwood", tag: nil },
       { date: Date.new(2023,4,1), location: nil, tag: "kept" },
@@ -60,14 +56,13 @@ class ParseTest < Minitest::Test
 
 
   # ==== TESTS
-  ## TESTS: EXAMPLES
-  files[:examples].each do |group_name, file_str|
-    define_method("test_example_#{group_name}") do
-      exp = items[:examples][group_name]
+  inputs.each do |name, file_str|
+    define_method("test_#{name}") do
+      exp = outputs[name]
       act = Litter.parse(file_str)
       # debugger unless exp == act
       assert_equal exp, act,
-        "Failed to parse this group of examples: #{group_name}"
+        "Failed to parse this example: #{name}"
     end
   end
 end
