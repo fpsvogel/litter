@@ -1,12 +1,7 @@
 require "parslet"
 require "date"
 
-require_relative "util/blank"
-require_relative "util/string_remove"
 require_relative "util/hash_deep_merge"
-require_relative "util/hash_to_struct"
-require_relative "errors"
-
 require_relative "config"
 require_relative "parser"
 require_relative "transform"
