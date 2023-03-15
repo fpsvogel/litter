@@ -1,3 +1,6 @@
+require "parslet"
+require "date"
+
 require_relative "util/blank"
 require_relative "util/string_remove"
 require_relative "util/hash_deep_merge"
@@ -6,6 +9,7 @@ require_relative "errors"
 
 require_relative "config"
 require_relative "parser"
+require_relative "transform"
 
 module Litter
   # Parses a file or string.
@@ -16,6 +20,9 @@ module Litter
     string ||= File.read(path)
     config = Config.new(config).hash
 
-    Parser.new(config[:parser]).parse(string)
+    parsed = Parser.new(config[:parser]).parse(string)
+    hashes = Transform.new.apply(parsed)
+
+    hashes
   end
 end

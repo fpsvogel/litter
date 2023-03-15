@@ -38,42 +38,24 @@ class ParseTest < Minitest::Test
   # The results of parsing the above Files are expected to equal these hashes.
   @items = {}
   @items[:examples] = {}
-
-  car_mat = {
-    name: "car mat",
-    finds: [
+  @items[:examples][:basic] = {
+    "car mat" => [
       { date: Date.new(2023,3,8), location: "west wildwood", tag: nil },
-      { date: Date.new(2023,4,1), location: nil, tag: nil },
-    ]
-  }
-  folding_chair = {
-    name: "folding chair",
-    finds: [
+      { date: Date.new(2023,4,1), location: nil, tag: "kept" },
+    ],
+    "folding chair" => [
       { date: Date.new(2023,3,8), location: "west wildwood", tag: "kept" },
       { date: Date.new(2023,3,8), location: "west wildwood", tag: "kept" },
-    ]
-  }
-  concrete_filled_bucket = {
-    name: "concrete-filled bucket",
-    finds: [
-      { date: Date.new(2023,4,1), location: "bridge", tag: nil },
+    ],
+    "concrete-filled bucket" => [
+      { date: Date.new(2023,3,8), location: "bridge", tag: nil },
       { date: Date.new(2023,4,1), location: "west wildwood", tag: "TODO" },
       { date: Date.new(2023,4,1), location: "west wildwood", tag: "TODO" },
-    ]
-  }
-  shopping_cart = {
-    name: "shopping_cart",
-    finds: [
+    ],
+    "shopping cart" => [
       { date: Date.new(2023,4,1), location: "bridge", tag: nil },
-    ]
+    ],
   }
-
-  @items[:examples][:basic] = [
-    car_mat,
-    folding_chair,
-    concrete_filled_bucket,
-    shopping_cart,
-  ]
 
 
 

@@ -1,7 +1,19 @@
-require "date"
-require "parslet"
-
 module Litter
+  # Example output from the example in parse_test.rb.
+  # Note: what looks like strings followed by "@" are actually Parslet::Slice.
+  #
+  # [{:date=>"2023/03/08"@0,
+  #   :location=>"west wildwood"@12,
+  #   :items=>
+  #    [{:name=>"car mat"@26},
+  #     {:name=>"folding chair "@34, :quantity=>"2"@49, :tag=>"kept"@52},
+  #     {:name=>"concrete-filled bucket "@57, :location=>"bridge"@81}]},
+  #  {:date=>"2023/4/1"@89,
+  #   :items=>
+  #    [{:name=>"concrete-filled bucket "@98, :quantity=>"2"@122, :location=>"west wildwood "@125, :tag=>"TODO"@140},
+  #     {:name=>"shopping cart "@145, :location=>"bridge"@160},
+  #     {:name=>"car mat "@167, :tag=>"kept"@176}]}]
+  #
   class Parser < Parslet::Parser
     attr_reader :config
 
@@ -35,9 +47,9 @@ module Litter
     rule(:item) { name >> quantity.maybe >> location.maybe >> tag.maybe }
 
     rule(:items) { (item >> newline).repeat.as(:items) }
-    rule(:date_and_items) { date_line >> items >> newline.repeat }
+    rule(:entry) { date_line >> items >> newline.repeat }
 
-    rule(:document) { date_and_items.repeat }
+    rule(:document) { entry.repeat }
 
     root :document
   end
