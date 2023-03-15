@@ -3,7 +3,7 @@ require_relative "transform"
 
 module Litter
   module Parsing
-    class File
+    class LitterFile
       attr_reader :string, :config
 
       # @param path [String] the path of the file to be parsed; if nil, uses file instead.
@@ -12,7 +12,7 @@ module Litter
       def initialize(path = nil, file: nil, config: {})
         validate_path_or_file(path, file)
 
-        @string = path ? ::File.read(path) : file.read
+        @string = path ? File.read(path) : file.read
         @config = Config.new(config || {}).hash
       end
 
@@ -34,9 +34,9 @@ module Litter
         return true if file && file.respond_to?(:read)
 
         if path
-          if !::File.exist?(path)
+          if !File.exist?(path)
             raise FileError, "File not found! #{path}"
-          elsif ::File.directory?(path)
+          elsif File.directory?(path)
             raise FileError, "A file is expected, but the path given is a directory: #{path}"
           end
         else
