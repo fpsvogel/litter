@@ -12,7 +12,7 @@ Litter is a Ruby gem for avid trash-picker-uppers. It parses a log of collected 
 
 ## Why?
 
-Because I enjoy keeping track of interesting items that I find while picking up litter in my neighborhood. Plus, I wanted to try the Parslet gem, which you can read more about in my blog post ["Parsing a litter log: trying out Parslet over regular expressions"](https://fpsvogel.com/posts/2023/ruby-parslet-vs-regex).
+Because I enjoy keeping track of interesting items that I find while picking up litter in my neighborhood. Plus, I wanted to try the Parslet gem, which you can read more about in my blog post ["Parsing text in Ruby, part 1: Parslet transforming my world"](https://fpsvogel.com/posts/2023/ruby-parslet-parsing-and-transformation).
 
 ## Installation
 
